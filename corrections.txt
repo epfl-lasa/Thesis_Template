@@ -1,0 +1,87 @@
+
+----------
+Kenji:
+1) In eq. (3.4.3), is it correct?  The author said that the joint 1 and
+Joint 2 of the robot were associated, but in this equation, you took the
+minimum between the joint 0 and joint 1.
+2) On the lines 8 and 9 from the bottom of page 52, I think ``bottle 2''
+and ``bottle 1'' are opposite, aren't they?
+3) On the line 8 from the bottom of page 49, ''... which have ...''
+might be ``... which has ...''.
+4) Equation (4.2.12) includes tau_r but it has never appeared after
+that. What is tau_r?
+5) Equation (B.2.2) in Appendix, the inequality sign is opposite.
+
+--------
+Aude:
+Modulated dynamics:
+Clarify continuity of h ; discuss form of modulation ; make clear (if needed) assumptions on form of f (continuous, stability)
+ 
+Contacts:
+Discuss why you do not use tactile features more complex than simply normal force and amplitude.
+ 
+Exploration:
+In chapter 3 - What is fast exploration? Quantify.
+
+--------
+Hannes:
+
+- No corrections
+
+--------
+Lorenzo:
+
+**
+General comments
+In Section 3.4.2 and 5.3 you make use of ICP and particle filter to localize an object using contact point. This problem has been addressed thoroughly in the literature, and more sophisticated techniques have been proposed. Although tactile localization is not central in the thesis is may be worth citing the following papers as possible extensions:
+Petrovskaya, A. and Khatib, O., Global Localization of Objects via Touch, IEEE Transactions on Robotics, vol. 27, no. 3, pp. 569–585, Jun. 2011.
+Gadeyne, K. and Bruyninckx, H., Markov techniques for object localization with force-controlled robots, in 10th Int’l Conf. on Advanced Robotics, 2001.
+Vezzani, G., Pattacini, U., Battistelli, G., Chisci, L., and Natale, L., Memory Unscented Particle Filter for 6-DOF Tactile Localization, arXiv:1607.02757 [cs.RO], 2016.
+
+Sometimes figures are quite far from the text in which they are referenced. This may be due to the fact that  figures are references in various points of the thesis. However it is a little annoying for the reader.
+
+**
+Chapter 3
+The choice of HMM for the face exploration/recognition could be better motivated, especially in contrast to other solutions (e.g. discriminative models).
+The object recognition task described in Section 3.4.2 is very similar to the one addressed in the following paper, with the difference that a particle filter is used to deal with local minima:
+Vezzani, G., Jamali, N., Pattacini, U., Battistelli, G., Chisci, L., and Natale, L., A Novel Bayesian Filtering Approach to Tactile Object Recognition, in IEEE-RAS International Conference on Humanoid Robots, Cancun, Mexico, 2016
+
+Minor comments:
+Page 25: “The 7 arm joints are used to achieve the vertical motion of the hand while one of the joint per finger is used to”  please specify which joint you use.
+Page 26: “the faces used in the experiments have been covered with aluminum foil because this enhances the response of the capacitive sensors”  this is not true for the fingertips described in (Jamali et al. 2015) because they are covered with conductive fabric. Maybe in this work you use the fingertip covered with conductive silicone (in which, with time, the conductive external layer would deteriorate leading to higher sensitivity to conductive material).
+Page 27 (Sec 3.2.2): “are the angles \theta…”  I guess this work uses the motor encoders (as opposed to the magnetic encoders mounted on the individual phalanges).
+Page 32: “such can be “  “such that it can be”
+Page 36: “The sensors are manufactured in sets of six 9x5 nodes distributed along the length of the finger”  This sentence is unclear, especially because the “nodes” are not visible in Figure 3.11 in which the hand and the sensors are depicted.
+Page 46, Section “Compliant tactile control”. In reading this section I had problems understanding the exact positioning of the tactile sensors and their distributions on the fingers. The wording “first, second and last phalanx” is also ambiguous. Maybe you should add somewhere in the thesis a picture that clearly explain how the sensors are mounted, their number of taxels and numbering of the phalanges. For this reason, I would also move section 3.4.2 “Setup” earlier.
+Page 46, explain equation 3.4.3.
+Page 50: Section 3.4.2 “Setup”. Please be more precise on how you use the OptiTrack system to compensate for the inaccuracy of the robot forward kinematics. The mapping between the OptiTrack markers and the iCub fingers seems to be non trivial and also potentially affected by errors in the kinematic model.
+Figure 3.24:  I suggest you present the results in the form of a confusion matrix. (-->answer: A confusion matrix does not bring the same information, i.e. the distance between each model, but only true/false positives ratios.)
+Page 52: close-loop  closed-loop
+
+**
+Chapter 4
+Minor comments:
+Page 60: what is n^i^T here?
+Page 61: please check dimensions of J_{C\capD} isn’t it N_{C\capD}xN instead of NxN_{C\capD} same for J_C\setminusD}?
+Page 67, text and Figure 4.2. Can you better explain the rationale behind the specific choice of v_r^i ?
+Page 69, at the end of the page, please state that Appendix A.1 explains how you select \tau_e.
+
+**
+Chapter 5
+The underlying assumption in the work in this section is that you already have the DS which implements the basic behaviors. In fact in experiment two you also demonstrate that the avoidance behavior can be obtained by setting h(s) to 1. Therefore it seems to me that most of the work is actually in the design of the behaviors whereas the learning of the modulation function is only an improvement on top of this. Can you discuss this point? Can you better motivate the advantages of the modulation functions w.r.t. to the task?
+In the first two experiments (in which h(s) is a function of a scalar) you use GP regression to learn a simple function. Can you better motivate the advantages of GP in contrast to simpler techniques (i.e. thresholding)?
+In the discussion of 5.6 it would be nice to compare the proposed technique for obstacle avoidance with EMDS w.r.t conventional techniques based e.g. on force fields. 
+To what extent are the learned modulation functions able to generalize to different contexts? 
+
+Minor comments:
+Page 92: specify that the definition of “locally active” is provided in Table 5.1.
+Page 94: equations 5.2.4 and 5.2.5. I could not figure out how M is affected by \theta and h_s here. Luckily the following example is much clearer in this respect. Please carefully check the notation and equations. 
+Section 5.3.2: in this section there are no details to understand the involved behaviors. One way to be more precise could be to add their mathematical formulation, if this is not possible (or too complex) improve the description. BTW the wording “linear dynamic” is clarified unambiguously (it could refer to linear as opposed to non-linear dynamical system) only in Sec 5.5.
+Section 5.3.3. The description of the coupling of the dynamical systems is very quick and insufficient. It would be useful to give more intuition on how the coupling works. At the very least you should defer the reader to Shukle & Billard 2012 in which this is explained.
+Sec 5.3.4: Better explain how you frame the optimization problem in 5.35 and why you do not use the controller in Chapter 4.
+Page 105: and 11.0s+/- 4.9 for LMDS  EMDS
+Page 108: “because the robot cannot stay in contact when there is a collision…the time since the last collision”. This sentence is unclear. Why can’t you use the contact position (or the distance between the robot and the contact position) as external signal to modulate the DS? What is the time since the last collision? Do you mean the time at which the contact occurred since the beginning of the movement?
+Figure 5.16: it would be helpful to better highlight the points of the robot and obstacle that are in contact, it would be especially useful when the figure is first referenced.
+Page 115/Section 5.5.2: can you visualize the velocity fields in Figure 5.20?
+Page 114, note 10: add reference to Figure 5.22 which clarifies this concept.
+Page 117/bullet point 4 and Figure 5.24. The region in which angle ~0.4 actually corresponds to values of h which are close to 0.5. This problem is probably due to the fact that h(s) is discontinuous in this area and the GP is interpolating h(s). I guess this is not a problem in practice because small perturbation in the movement would drive the robot to one of the areas above or below. However, it may be worth discussing this point.

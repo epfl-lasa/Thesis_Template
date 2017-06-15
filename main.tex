@@ -1,0 +1,250 @@
+\documentclass[fancy,estyle,twoside,a4paper]{ethesis}
+% \documentclass[fancy,estyle,twoside,a4paper,draft]{ethesis}
+% \documentclass[fancy,estyle,twoside,a4paper,proquest]{ethesis}
+% \documentclass[estyle,twoside,a4paper,proquest]{ethesis}
+
+%The following two packages are required to have awesome font qualities!
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl} %,placeins
+
+% \usepackage{titlesec}
+
+
+% ========== Mathematics 
+
+\usepackage{amsmath,amssymb,amstext,amsthm}
+\usepackage{gensymb}
+\numberwithin{equation}{section}
+
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage[noabbrev,capitalize]{cleveref}
+
+% \crefname{algocf}{alg.}{algs.}
+\Crefname{algocf}{Algorithm}{Algorithms}
+
+
+\usepackage[round]{natbib}
+% Increase spacing between references
+\setlength{\bibsep}{15pt}
+
+% ========== Color
+
+\usepackage{color,soul,bm}
+\usepackage{colortbl}
+
+\usepackage{graphicx}
+
+\usepackage{fancyhdr}
+\usepackage{lettrine} %Typeset dropped capitals
+
+% ========== Algorithm
+
+% using both, maybe not a good idea ?
+% \usepackage[ruled,vlined,linesnumbered,noresetcount,boxed]{algorithm2e}
+\usepackage[ruled,vlined, linesnumbered, boxed]{algorithm2e}
+% \usepackage[]{algorithm2e}
+\usepackage{algorithmic}
+
+\usepackage{bibentry}
+\nobibliography* % What does that mean ???
+
+% ========== Figures
+  
+\usepackage{multirow}
+% \usepackage[footnotesize,bf,hang]{caption,subfigure}
+\usepackage[]{subfigure}
+\usepackage[small,bf,hang]{caption}
+% \usepackage[bf,hang]{caption}
+
+
+\usepackage{booktabs} %Publication quality tables in LaTeX
+
+\usepackage{mathrsfs} %cool font, see http://zelmanov.ptep-online.com/ctan/symbols-a4.pdf
+\usepackage[titletoc,toc,page]{appendix}
+
+\usepackage{soul}
+\usepackage{enumitem}
+\usepackage{verbatim}
+% \usepackage{tikz} % drawing tools in latex
+
+\RequirePackage{natbib}
+\usepackage[utf8]{inputenc} %unicode support
+% \usepackage{CJK}
+\usepackage{CJKutf8}
+\usepackage{kotex}
+
+% \usepackage[utf8x]{inputenc} %unicode support
+% \usepackage{color, colortbl}
+% \definecolor{Gray}{gray}{0.9}
+
+% Block floats between sections
+\usepackage{placeins}
+\usepackage{epigraph}
+\usepackage{xcolor}
+
+\usepackage[author={Sina Mirrazavi},final]{pdfcomment} % This package made by Nicolas Sommer who got it from other people! I , Sina Mirrazavi, Just cleaned it... Have fun with the final months of your PHD!
+
+\usepackage[normalem]{ulem} % either use this (simple) or
+
+
+\usepackage{wrapfig}
+
+% \titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+
+
+\newcommand{\real}{\mathbb{R}}
+
+
+% \usepackage[makeroom]{cancel}
+
+% Useful for loops
+\usepackage{pgffor}
+\usepackage{multicol}
+
+% Used to fix page breaks just after sections (by requiring space)
+\usepackage{needspace}
+
+% Insert PDF
+\usepackage{pdfpages}
+
+\usepackage{framed}
+\usepackage[noabbrev,capitalize]{cleveref} % not sure this one works
+\usepackage{mathtools}
+
+
+%% test
+% \usepackage{titlesec}
+
+% \hypersetup{colorlinks={true},
+\hypersetup{colorlinks={false},
+            linkcolor={blue},
+            anchorcolor={blue},
+            citecolor={blue},
+            filecolor={blue},
+            urlcolor={blue},
+            menucolor={blue},
+            pdfstartview=Fit,           
+            pdfpagemode=UseOutlines,
+            hidelinks={true}, % no color ..
+}
+
+\hypersetup{colorlinks={false},
+}
+
+\usepackage{breakurl}
+
+%%% Refcheck 
+% \newcommand{\gRefCheck}{}
+
+\ifdefined \gRefCheck
+\usepackage[ignoreunlbld,norefs]{refcheck}
+%%% Infrastructure    
+\makeatletter
+\newcommand{\refcheckize}[1]{%
+  \expandafter\let\csname @@\string#1\endcsname#1%
+  \expandafter\DeclareRobustCommand\csname relax\string#1\endcsname[1]{%
+    \csname @@\string#1\endcsname{##1}\@for\@temp:=##1\do{\wrtusdrf{\@temp}\wrtusdrf{{\@temp}}}}%
+  \expandafter\let\expandafter#1\csname relax\string#1\endcsname
+}
+\newcommand{\refcheckizetwo}[1]{%
+  \expandafter\let\csname @@\string#1\endcsname#1%
+  \expandafter\DeclareRobustCommand\csname relax\string#1\endcsname[2]{%
+    \csname @@\string#1\endcsname{##1}{##2}\wrtusdrf{##1}\wrtusdrf{{##1}}\wrtusdrf{##2}\wrtusdrf{{##2}}}%
+  \expandafter\let\expandafter#1\csname relax\string#1\endcsname
+}
+\makeatother
+
+\refcheckize{\cref}
+\refcheckize{\Cref}
+\refcheckize{\subref}
+\refcheckizetwo{\crefrange}
+\refcheckizetwo{\Crefrange}
+\fi
+%%% end of refcheck
+
+% Add more of these stuff!
+\newcommand{\gDisplayTitle}{}
+\newcommand{\gDisplayPreamble}{}
+\newcommand{\gDisplayTableOfContents}{}
+\newcommand{\gDisplayIntroduction}{}
+\newcommand{\gDisplayBackground}{}
+\newcommand{\gDisplaychthree}{}
+\newcommand{\gDisplaychfour}{}
+\newcommand{\gDisplaychfive}{}
+\newcommand{\gDisplayConclusions}{}
+\newcommand{\gDisplayAppendix}{}
+\newcommand{\gDisplayBibliography}{}
+\newcommand{\gDisplayCV}{}
+
+
+\newcommand{\tagMainFile}
+
+
+\newsavebox{\fmbox}
+\newenvironment{fmpage}[1]
+{\begin{lrbox}{\fmbox}\begin{minipage}{#1}}
+{\end{minipage}\end{lrbox}\fbox{\usebox{\fmbox}}}
+
+\DeclareCaptionLabelFormat{adja-page}{\hrulefill\\#1 #2 \emph{(previous page)}}
+
+
+\graphicspath{{ch1-Introduction/Figures/},{ch2-Background/Figures/},{ch3-Compliance/Figures/},{ch3-Compliance/TFR/Figures/},{ch3-Compliance/},{ch3-CompliancePBP/Figures/},{ch3-CompliancePBP/TFR/Figures/},{ch3-CompliancePBP/ICRA/},{ch3-CompliancePBP/},{ch4-Exploration/},{ch5/}}
+
+
+\begin{document}
+
+\input{macros}
+
+\cleardoublepage
+\phantomsection
+\pdfbookmark{Title page}{titlepage}
+
+\ifdefined \gDisplayTitle
+\title{?}
+\author{?}
+\department{Learning Algorithms and Systems Laboratory (LASA)}
+\college{Doctoral Program on Robotics, Control, and Intelligent Systems}
+\schools{School of Engineering} %
+\advisor{Prof. Aude Billard}
+\degreeyear{?, ?}
+\phdthesis
+\maketitle
+\emptynewpage
+\fi
+
+\ifdefined \gDisplayPreamble
+\frontmatter
+\input{ch0-Preamble}
+\fi
+
+\ifdefined \gDisplayTableOfContents
+\cleardoublepage
+\phantomsection
+\pdfbookmark[chapter]{\contentsname}{toc}
+\tableofcontents
+\newpage
+\forcenewpage
+\fi
+
+\mainmatter
+
+\ifdefined  \gDisplayIntroduction \input{ch1/ch1-Introduction.tex} 	\fi
+\ifdefined  \gDisplayBackground		\input{ch2/ch2-Background.tex} 	\fi
+\ifdefined	\gDisplaychthree		\input{ch3/ch3.tex}  \fi
+\ifdefined  \gDisplayAppendix       \input{Appendix}                \fi
+    
+\backmatter
+
+% Bibliography
+\ifdefined \gDisplayBibliography
+\bibliographystyle{plainnat}
+\bibliography{bib/biblio_all}\fi
+
+% CV
+\ifdefined	\gDisplayCV
+\chapter{Curriculum Vitae}
+\includepdf[pages=-]{CV.pdf}
+\fi
+
+\end{document}
