@@ -1,3 +1,4 @@
 # Thesis_Template
-LASA's PHD thesis template
+LASA's PHD thesis template 
+
 good luck...
